@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <style>.title{font:700 30px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.h{font:700 20px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.t{font:16px "Microsoft YaHei",Arial,sans-serif;fill:#344054}.box{rx:12;ry:12;stroke-width:2;fill:#fff}.blue{stroke:#2563eb;fill:#eff6ff}.green{stroke:#16a34a;fill:#f0fdf4}.orange{stroke:#dd6b20;fill:#fff7ed}.red{stroke:#dc2626;fill:#fef2f2}.arrow{stroke:#263445;stroke-width:2.4;fill:none;marker-end:url(#m)}.dash{stroke-dasharray:8 6}</style>
+    <marker id="m" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#263445"/></marker>
+  </defs>
+  <rect width="1280" height="720" fill="#fff"/><text x="640" y="52" text-anchor="middle" class="title">图5-1 预测速度到动态边权映射示意图</text>
+  <rect x="70" y="130" width="220" height="105" class="box blue"/><text x="180" y="170" text-anchor="middle" class="h">T-GCN 预测输出</text><text x="180" y="202" text-anchor="middle" class="t">未来 5 / 10 / 15 min</text><text x="180" y="226" text-anchor="middle" class="t">200 个核心 detector</text>
+  <rect x="385" y="130" width="220" height="105" class="box green"/><text x="495" y="170" text-anchor="middle" class="h">方差恢复</text><text x="495" y="202" text-anchor="middle" class="t">恢复速度波动</text><text x="495" y="226" text-anchor="middle" class="t">避免预测过平滑</text>
+  <rect x="700" y="130" width="220" height="105" class="box green"/><text x="810" y="170" text-anchor="middle" class="h">IDW 空间扩展</text><text x="810" y="202" text-anchor="middle" class="t">6 邻域反距离加权</text><text x="810" y="226" text-anchor="middle" class="t">扩展至 2587 detector</text>
+  <rect x="990" y="130" width="220" height="105" class="box orange"/><text x="1100" y="170" text-anchor="middle" class="h">路段速度估计</text><text x="1100" y="202" text-anchor="middle" class="t">道路边匹配最近 detector</text><text x="1100" y="226" text-anchor="middle" class="t">得到预测通行速度</text>
+  <rect x="260" y="390" width="240" height="110" class="box orange"/><text x="380" y="430" text-anchor="middle" class="h">速度融合</text><text x="380" y="462" text-anchor="middle" class="t">预测速度 + 静态限速</text><text x="380" y="486" text-anchor="middle" class="t">抑制异常低速扰动</text>
+  <rect x="595" y="390" width="240" height="110" class="box red"/><text x="715" y="430" text-anchor="middle" class="h">动态通行时间</text><text x="715" y="462" text-anchor="middle" class="t">t_e = L_e / v_e</text><text x="715" y="486" text-anchor="middle" class="t">边长映射为时间代价</text>
+  <rect x="930" y="390" width="240" height="110" class="box blue"/><text x="1050" y="430" text-anchor="middle" class="h">路径搜索边权</text><text x="1050" y="462" text-anchor="middle" class="t">预测驱动重规划</text><text x="1050" y="486" text-anchor="middle" class="t">时变 A* 动态搜索</text>
+  <path d="M290 182 L385 182" class="arrow"/><path d="M605 182 L700 182" class="arrow"/><path d="M920 182 L990 182" class="arrow"/>
+  <path d="M1100 235 C1100 330 380 300 380 390" class="arrow"/><path d="M500 445 L595 445" class="arrow"/><path d="M835 445 L930 445" class="arrow"/>
+  <path d="M180 235 C170 560 935 600 1050 500" class="arrow dash"/>
+</svg>

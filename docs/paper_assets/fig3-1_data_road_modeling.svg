@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <style>
+      .title{font:700 30px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.h{font:700 20px "Microsoft YaHei",Arial,sans-serif;fill:#172033}.t{font:16px "Microsoft YaHei",Arial,sans-serif;fill:#344054}.box{rx:12;ry:12;stroke-width:2;fill:#fff}.blue{stroke:#2563eb;fill:#eff6ff}.green{stroke:#16a34a;fill:#f0fdf4}.orange{stroke:#dd6b20;fill:#fff7ed}.purple{stroke:#7c3aed;fill:#faf5ff}.arrow{stroke:#263445;stroke-width:2.4;fill:none;marker-end:url(#m)}
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#263445"/></marker>
+  </defs>
+  <rect width="1280" height="720" fill="#fff"/><text x="640" y="52" text-anchor="middle" class="title">图3-1 数据处理与路网建模流程图</text>
+  <rect x="70" y="105" width="250" height="95" class="box blue"/><text x="195" y="142" text-anchor="middle" class="h">PeMS D12 交通数据</text><text x="195" y="172" text-anchor="middle" class="t">速度 / detector / 时间序列</text>
+  <rect x="70" y="265" width="250" height="95" class="box blue"/><text x="195" y="302" text-anchor="middle" class="h">交通数据预处理</text><text x="195" y="332" text-anchor="middle" class="t">缺失补全、异常处理、标准化</text>
+  <rect x="70" y="425" width="250" height="95" class="box blue"/><text x="195" y="462" text-anchor="middle" class="h">预测节点与邻接矩阵</text><text x="195" y="492" text-anchor="middle" class="t">200 个核心节点，200 x 200</text>
+  <rect x="515" y="105" width="250" height="95" class="box green"/><text x="640" y="142" text-anchor="middle" class="h">OSM 原始路网数据</text><text x="640" y="172" text-anchor="middle" class="t">节点、道路边、方向、限速</text>
+  <rect x="515" y="265" width="250" height="95" class="box green"/><text x="640" y="302" text-anchor="middle" class="h">道路网络提取</text><text x="640" y="332" text-anchor="middle" class="t">构建 MultiDiGraph 路网</text>
+  <rect x="515" y="425" width="250" height="95" class="box green"/><text x="640" y="462" text-anchor="middle" class="h">路网空间索引</text><text x="640" y="492" text-anchor="middle" class="t">312869 个节点，776851 条边</text>
+  <rect x="940" y="265" width="260" height="110" class="box orange"/><text x="1070" y="306" text-anchor="middle" class="h">传感器到路网映射</text><text x="1070" y="338" text-anchor="middle" class="t">最近节点与道路边匹配</text><text x="1070" y="362" text-anchor="middle" class="t">形成预测与规划衔接</text>
+  <rect x="940" y="455" width="260" height="110" class="box purple"/><text x="1070" y="496" text-anchor="middle" class="h">速度场与空间扩展</text><text x="1070" y="528" text-anchor="middle" class="t">IDW 扩展至 2587 detector</text><text x="1070" y="552" text-anchor="middle" class="t">服务路段状态与边权更新</text>
+  <path d="M195 200 L195 265" class="arrow"/><path d="M195 360 L195 425" class="arrow"/><path d="M640 200 L640 265" class="arrow"/><path d="M640 360 L640 425" class="arrow"/>
+  <path d="M765 472 C850 472 855 320 940 320" class="arrow"/><path d="M320 472 C600 630 820 540 940 510" class="arrow"/><path d="M1070 375 L1070 455" class="arrow"/>
+</svg>

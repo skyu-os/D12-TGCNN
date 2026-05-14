@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路径规划算法比对分析</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/compare.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 侧边控制面板 -->
+        <div id="panel">
+            <h2>📊 算法比对分析</h2>
+            <p class="subtitle">多维度路径规划对比</p>
+            
+            <div style="margin-bottom: 20px; text-align: center;">
+                <a href="/index.html" style="
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background: rgba(255, 255, 255, 0.2);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
+                   onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+                    ← 返回主页
+                </a>
+            </div>
+            
+            <div class="section">
+                <label>起点</label>
+                <div class="coord-display" id="start-display">
+                    点击地图选择起点
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>终点</label>
+                <div class="coord-display" id="end-display">
+                    点击地图选择终点
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>选择算法</label>
+                <div class="algorithm-selection">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="algo-astar" checked>
+                        <span>A* 算法</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="algo-dijkstra">
+                        <span>Dijkstra 算法</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="algo-greedy">
+                        <span>贪心算法</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="algo-alt">
+                        <span>ALT 算法</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>优化目标</label>
+                <select id="weight-type">
+                    <option value="time">最短时间</option>
+                    <option value="distance">最短距离</option>
+                </select>
+            </div>
+            
+            <button id="btn-compare" class="btn-primary" disabled>
+                开始比对分析
+            </button>
+            <button id="btn-reset" class="btn-secondary">
+                重置
+            </button>
+            
+            <!-- 比对结果 -->
+            <div id="comparison-result" class="hidden">
+                <h3>📈 比对结果</h3>
+                
+                <!-- 统计表格 -->
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>算法</th>
+                                <th>距离</th>
+                                <th>时间</th>
+                                <th>计算耗时</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stats-tbody">
+                            <!-- 动态填充 -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- 图表展示 -->
+                <div class="charts">
+                    <div class="chart-container">
+                        <h4>距离对比</h4>
+                        <canvas id="distance-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>时间对比</h4>
+                        <canvas id="time-chart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- 详细分析 -->
+                <div class="analysis">
+                    <h4>📊 分析结论</h4>
+                    <div id="analysis-content">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 加载状态 -->
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <span>计算中...</span>
+            </div>
+            
+            <!-- 错误信息 -->
+            <div id="error" class="hidden"></div>
+        </div>
+        
+        <!-- 地图容器 -->
+        <div id="map"></div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/compare-map.js"></script>
+    <script src="js/compare.js"></script>
+</body>
+</html>

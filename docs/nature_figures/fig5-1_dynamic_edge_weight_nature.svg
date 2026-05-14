@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="365.896063pt" height="167.187402pt" viewBox="0 0 365.896063 167.187402" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-05-03T14:59:15.501892</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 167.187402 
+L 365.896063 167.187402 
+L 365.896063 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 159.987402 
+L 358.696063 159.987402 
+L 358.696063 7.2 
+L 7.2 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 30.39874 88.482898 
+L 75.390236 88.482898 
+Q 81.717165 88.482898 81.717165 85.732724 
+L 81.717165 61.592315 
+Q 81.717165 58.842142 75.390236 58.842142 
+L 30.39874 58.842142 
+Q 24.071811 58.842142 24.071811 61.592315 
+L 24.071811 85.732724 
+Q 24.071811 88.482898 30.39874 88.482898 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #b4c0e4; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 79.499548 73.66252 
+Q 82.772593 73.66252 84.927605 73.66252 
+" clip-path="url(#pe47716c52e)" style="fill: none; stroke: #4d4d4d; stroke-linecap: round"/>
+    <path d="M 81.727605 72.06252 
+L 84.927605 73.66252 
+L 81.727605 75.26252 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 93.668031 88.482898 
+L 138.659528 88.482898 
+Q 144.986457 88.482898 144.986457 85.732724 
+L 144.986457 61.592315 
+Q 144.986457 58.842142 138.659528 58.842142 
+L 93.668031 58.842142 
+Q 87.341102 58.842142 87.341102 61.592315 
+L 87.341102 85.732724 
+Q 87.341102 88.482898 93.668031 88.482898 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #d8d8f0; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 142.768839 73.66252 
+Q 146.041885 73.66252 148.196896 73.66252 
+" clip-path="url(#pe47716c52e)" style="fill: none; stroke: #4d4d4d; stroke-linecap: round"/>
+    <path d="M 144.996896 72.06252 
+L 148.196896 73.66252 
+L 144.996896 75.26252 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 156.937323 88.482898 
+L 201.928819 88.482898 
+Q 208.255748 88.482898 208.255748 85.732724 
+L 208.255748 61.592315 
+Q 208.255748 58.842142 201.928819 58.842142 
+L 156.937323 58.842142 
+Q 150.610394 58.842142 150.610394 61.592315 
+L 150.610394 85.732724 
+Q 150.610394 88.482898 156.937323 88.482898 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #77d7d1; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 206.038131 73.66252 
+Q 209.311176 73.66252 211.466187 73.66252 
+" clip-path="url(#pe47716c52e)" style="fill: none; stroke: #4d4d4d; stroke-linecap: round"/>
+    <path d="M 208.266187 72.06252 
+L 211.466187 73.66252 
+L 208.266187 75.26252 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 220.206614 88.482898 
+L 265.19811 88.482898 
+Q 271.525039 88.482898 271.525039 85.732724 
+L 271.525039 61.592315 
+Q 271.525039 58.842142 265.19811 58.842142 
+L 220.206614 58.842142 
+Q 213.879685 58.842142 213.879685 61.592315 
+L 213.879685 85.732724 
+Q 213.879685 88.482898 220.206614 88.482898 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #f0e0d0; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 269.307422 73.66252 
+Q 272.580467 73.66252 274.735479 73.66252 
+" clip-path="url(#pe47716c52e)" style="fill: none; stroke: #4d4d4d; stroke-linecap: round"/>
+    <path d="M 271.535479 72.06252 
+L 274.735479 73.66252 
+L 271.535479 75.26252 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 283.475906 88.482898 
+L 328.467402 88.482898 
+Q 334.794331 88.482898 334.794331 85.732724 
+L 334.794331 61.592315 
+Q 334.794331 58.842142 328.467402 58.842142 
+L 283.475906 58.842142 
+Q 277.148976 58.842142 277.148976 61.592315 
+L 277.148976 85.732724 
+Q 277.148976 88.482898 283.475906 88.482898 
+z
+" clip-path="url(#pe47716c52e)" style="fill: #e9a6a1; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 28.289764 111.095433 
+L 330.576378 111.095433 
+" clip-path="url(#pe47716c52e)" style="fill: none; stroke: #d8d8d8; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 700 11px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="17.744882" y="25.160369" transform="rotate(-0 17.744882 25.160369)">预测速度到动态边权映射</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(34.584566 71.22291)">T-GCN多步</text>
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(38.894488 79.957598)">节点速度</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(102.16378 71.22291)">方差恢复</text>
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(102.16378 79.957598)">速度校正</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(165.176586 71.22291)">IDW扩展</text>
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(158.35979 79.957598)">全部detector</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(221.702362 71.199395)">路段速度融合</text>
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(230.847206 79.934082)">v_edge</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(291.971654 71.199395)">通行时间</text>
+    <text style="fill: #272727; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif" transform="translate(289.151966 79.934082)">w_e(t)=l/v</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #0f4d92; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="35.319685" y="121.790551" transform="rotate(-0 35.319685 121.790551)">节点域</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #42949e; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="161.858268" y="121.790551" transform="rotate(-0 161.858268 121.790551)">空间映射</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #b64342; font: 7px 'Microsoft YaHei', 'SimHei', 'SimSun', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="274.337008" y="121.790551" transform="rotate(-0 274.337008 121.790551)">路径搜索代价</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe47716c52e">
+   <rect x="7.2" y="7.2" width="351.496063" height="152.787402"/>
+  </clipPath>
+ </defs>
+</svg>

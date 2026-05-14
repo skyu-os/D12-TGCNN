@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local thesis/material folders
+初稿/
+图片/
+论文章节/
+论文/章节/
+
+# Data files (large)
+*.osm
+*.osm.pbf
+*.osm.xz
+*.gz
+data/**/*.osm
+data/osm/*.osm.pbf
+data/osm/*.osm.xz
+data/osm/*.gz
+data/**/*.gz
+cache/*.json
+
+# Model files (large)
+models/*.pt
+models/*.pth
+models/*.pkl
+models/*.h5
+**/*.pt
+**/*.pth
+**/*.pkl
+**/*.h5
+
+# Large generated data
+data/processed/*.pkl
+TGCN/data/d12_data/
+TGCN/tgcn_pytorch/data/all_sensors/
+TGCN/T-GCN-master.zip
+TGCN/T-GCN-master/**/data/
+TGCN/T-GCN-master/**/out/
+TGCN/T-GCN-master/**/Output/
+
+# Logs
+*.log

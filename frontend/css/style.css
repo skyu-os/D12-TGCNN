@@ -1,0 +1,424 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#app {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 侧边控制面板 */
+#panel {
+    width: 380px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 24px;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#panel h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 24px;
+}
+
+/* 区块样式 */
+.section {
+    margin-bottom: 20px;
+}
+
+.section label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.95;
+}
+
+/* 坐标显示 */
+.coord-display {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.coord-display:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.coord-display.has-value {
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: 500;
+}
+
+/* 选择框 */
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+select:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+select:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* 按钮样式 */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 结果展示 */
+#result {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.stats.has-more-items {
+    grid-template-columns: 1fr 1fr;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-item:not(.hidden) {
+    animation: fadeIn 0.3s ease;
+}
+
+.stat-label {
+    display: block;
+    font-size: 11px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* 加载状态 */
+#loading {
+    margin-top: 24px;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 12px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#loading span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 错误信息 */
+#error {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+    border-radius: 8px;
+    font-size: 13px;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* 隐藏类 */
+.hidden {
+    display: none !important;
+}
+
+/* 地图容器 */
+#map {
+    flex: 1;
+    height: 100vh;
+    position: relative;
+}
+
+/* Leaflet 自定义样式 */
+.leaflet-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 路径线样式 */
+.leaflet-overlay-pane path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 标记样式 */
+.custom-marker {
+    background: white;
+    border: 3px solid #667eea;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.custom-marker.start {
+    border-color: #22c55e;
+    background: #22c55e;
+}
+
+.custom-marker.end {
+    border-color: #ef4444;
+    background: #ef4444;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #panel {
+        width: 100%;
+        max-height: 40vh;
+        border-radius: 0 0 16px 16px;
+    }
+    
+    #map {
+        height: 60vh;
+    }
+}
+
+/* 滚动条样式 */
+#panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+#panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+#panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+/* 交通预测面板 */
+.prediction-section {
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.prediction-hint {
+    margin-top: 8px;
+    font-size: 12px;
+    opacity: 0.88;
+    line-height: 1.5;
+}
+
+#prediction-result {
+    margin-top: 14px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+#prediction-result h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.prediction-table-wrap {
+    margin-top: 12px;
+    max-height: 220px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.prediction-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.prediction-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: rgba(86, 106, 200, 0.95);
+    color: #fff;
+    text-align: left;
+    padding: 8px 10px;
+    font-weight: 600;
+}
+
+.prediction-table tbody td {
+    padding: 8px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.prediction-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.prediction-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+
+#predictive-impact {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#prediction-result h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.impact-note {
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    line-height: 1.5;
+}

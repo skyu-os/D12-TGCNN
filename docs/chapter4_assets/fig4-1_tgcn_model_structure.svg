@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .label { font: 600 20px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .small { font: 16px "Microsoft YaHei", Arial, sans-serif; fill: #4a5568; }
+      .note { font: 15px "Microsoft YaHei", Arial, sans-serif; fill: #5f6b7a; }
+      .box { fill: #ffffff; stroke-width: 2.2; rx: 12; ry: 12; }
+      .blue { stroke: #2f6fba; fill: #f3f8ff; }
+      .green { stroke: #2f855a; fill: #f3fbf6; }
+      .orange { stroke: #dd6b20; fill: #fff8f0; }
+      .purple { stroke: #805ad5; fill: #faf5ff; }
+      .red { stroke: #d64545; fill: #fff5f5; }
+      .gray { stroke: #718096; fill: #f8fafc; }
+      .arrow { stroke: #263445; stroke-width: 2.4; fill: none; marker-end: url(#arrowhead); }
+      .dash { stroke-dasharray: 8 6; }
+      .stage { font: 700 18px "Microsoft YaHei", Arial, sans-serif; fill: #2d3748; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#263445"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="640" y="54" text-anchor="middle" class="title">图4-1 T-GCN 模型结构示意图</text>
+
+  <rect x="42" y="92" width="1196" height="548" rx="18" fill="#fbfcfe" stroke="#d8dee9" stroke-width="1.5"/>
+
+  <text x="88" y="130" class="stage">输入层</text>
+  <rect x="70" y="155" width="250" height="122" class="box blue"/>
+  <text x="195" y="195" text-anchor="middle" class="label">历史速度序列</text>
+  <text x="195" y="226" text-anchor="middle" class="small">最近 12 个时间步</text>
+  <text x="195" y="252" text-anchor="middle" class="small">输入矩阵 12 x 200</text>
+
+  <rect x="70" y="382" width="250" height="116" class="box green"/>
+  <text x="195" y="423" text-anchor="middle" class="label">传感器邻接矩阵</text>
+  <text x="195" y="454" text-anchor="middle" class="small">核心 detector 拓扑关系</text>
+  <text x="195" y="480" text-anchor="middle" class="small">邻接矩阵 200 x 200</text>
+
+  <text x="430" y="130" class="stage">时空特征提取</text>
+  <rect x="380" y="175" width="220" height="122" class="box purple"/>
+  <text x="490" y="216" text-anchor="middle" class="label">图卷积层 GCN</text>
+  <text x="490" y="247" text-anchor="middle" class="small">融合道路空间相关性</text>
+  <text x="490" y="273" text-anchor="middle" class="small">提取空间特征</text>
+
+  <rect x="670" y="175" width="220" height="122" class="box orange"/>
+  <text x="780" y="216" text-anchor="middle" class="label">GRU 时间单元</text>
+  <text x="780" y="247" text-anchor="middle" class="small">捕获速度时序依赖</text>
+  <text x="780" y="273" text-anchor="middle" class="small">建模短时变化趋势</text>
+
+  <rect x="960" y="175" width="210" height="122" class="box red"/>
+  <text x="1065" y="216" text-anchor="middle" class="label">全连接输出层</text>
+  <text x="1065" y="247" text-anchor="middle" class="small">生成多步速度预测</text>
+  <text x="1065" y="273" text-anchor="middle" class="small">输出矩阵 3 x 200</text>
+
+  <text x="430" y="382" class="stage">结果后处理</text>
+  <rect x="380" y="410" width="220" height="100" class="box gray"/>
+  <text x="490" y="452" text-anchor="middle" class="label">方差恢复</text>
+  <text x="490" y="482" text-anchor="middle" class="small">还原速度波动幅度</text>
+
+  <rect x="670" y="410" width="220" height="100" class="box gray"/>
+  <text x="780" y="452" text-anchor="middle" class="label">IDW 空间扩展</text>
+  <text x="780" y="482" text-anchor="middle" class="small">200 扩展至 2587 detector</text>
+
+  <rect x="960" y="410" width="210" height="100" class="box blue"/>
+  <text x="1065" y="452" text-anchor="middle" class="label">路径规划边权</text>
+  <text x="1065" y="482" text-anchor="middle" class="small">预测速度转通行时间</text>
+
+  <path d="M320 216 L380 216" class="arrow"/>
+  <path d="M320 440 C350 440 350 236 380 236" class="arrow dash"/>
+  <path d="M600 236 L670 236" class="arrow"/>
+  <path d="M890 236 L960 236" class="arrow"/>
+  <path d="M1065 297 L1065 370 C1065 392 1040 392 1040 410" class="arrow"/>
+  <path d="M960 460 L890 460" class="arrow"/>
+  <path d="M670 460 L600 460" class="arrow"/>
+
+  <path d="M490 410 C490 372 780 342 1065 297" class="arrow dash"/>
+
+  <rect x="180" y="575" width="920" height="42" rx="21" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="640" y="602" text-anchor="middle" class="note">预测目标：基于 1 小时历史速度与 200 节点空间拓扑，预测未来 5 / 10 / 15 min 交通速度，并服务动态路径规划</text>
+</svg>

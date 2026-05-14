@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <style>
+      .title{font:700 30px "Microsoft YaHei",Arial,sans-serif;fill:#172033}
+      .h{font:700 21px "Microsoft YaHei",Arial,sans-serif;fill:#172033}
+      .t{font:16px "Microsoft YaHei",Arial,sans-serif;fill:#344054}
+      .box{rx:14;ry:14;stroke-width:2;fill:#fff}
+      .a{stroke:#dd6b20;fill:#fff7ed}.b{stroke:#2563eb;fill:#eff6ff}.c{stroke:#16a34a;fill:#f0fdf4}.d{stroke:#7c3aed;fill:#faf5ff}.e{stroke:#dc2626;fill:#fef2f2}.f{stroke:#0f766e;fill:#f0fdfa}
+      .arrow{stroke:#263445;stroke-width:2.5;fill:none;marker-end:url(#m)}
+      .dash{stroke-dasharray:8 6}
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#263445"/></marker>
+  </defs>
+  <rect width="1280" height="720" fill="#fff"/>
+  <text x="640" y="52" text-anchor="middle" class="title">图1-1 研究总体技术路线图</text>
+  <rect x="70" y="105" width="190" height="110" class="box a"/><text x="165" y="148" text-anchor="middle" class="h">问题定义</text><text x="165" y="180" text-anchor="middle" class="t">静态路径忽略拥堵</text><text x="165" y="204" text-anchor="middle" class="t">目标：预测驱动规划</text>
+  <rect x="325" y="105" width="190" height="110" class="box b"/><text x="420" y="148" text-anchor="middle" class="h">数据基础</text><text x="420" y="180" text-anchor="middle" class="t">PeMS D12 交通数据</text><text x="420" y="204" text-anchor="middle" class="t">OSM 区域路网</text>
+  <rect x="580" y="105" width="190" height="110" class="box c"/><text x="675" y="148" text-anchor="middle" class="h">数据建模</text><text x="675" y="180" text-anchor="middle" class="t">清洗、补全、标准化</text><text x="675" y="204" text-anchor="middle" class="t">邻接矩阵与路网映射</text>
+  <rect x="835" y="105" width="190" height="110" class="box d"/><text x="930" y="148" text-anchor="middle" class="h">交通预测</text><text x="930" y="180" text-anchor="middle" class="t">T-GCN 时空建模</text><text x="930" y="204" text-anchor="middle" class="t">5 / 10 / 15 min 预测</text>
+  <rect x="530" y="330" width="220" height="120" class="box e"/><text x="640" y="374" text-anchor="middle" class="h">动态路径规划</text><text x="640" y="406" text-anchor="middle" class="t">预测速度转边权</text><text x="640" y="430" text-anchor="middle" class="t">Dijkstra / A* / ALT / 时变 A*</text>
+  <rect x="835" y="330" width="220" height="120" class="box f"/><text x="945" y="374" text-anchor="middle" class="h">实验与评估</text><text x="945" y="406" text-anchor="middle" class="t">RMSE、MAE、MAPE、R2</text><text x="945" y="430" text-anchor="middle" class="t">路径距离、时间、耗时</text>
+  <rect x="530" y="555" width="220" height="86" class="box a"/><text x="640" y="598" text-anchor="middle" class="h">总结与展望</text><text x="640" y="626" text-anchor="middle" class="t">完整技术闭环与改进方向</text>
+  <path d="M260 160 L325 160" class="arrow"/><path d="M515 160 L580 160" class="arrow"/><path d="M770 160 L835 160" class="arrow"/>
+  <path d="M930 215 C930 280 640 265 640 330" class="arrow"/><path d="M750 390 L835 390" class="arrow"/><path d="M945 450 C945 520 640 500 640 555" class="arrow"/>
+  <path d="M640 450 C470 485 425 270 420 215" class="arrow dash"/>
+</svg>

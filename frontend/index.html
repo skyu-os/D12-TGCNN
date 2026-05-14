@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeMS D12 路径规划系统</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/segment-traffic.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 侧边控制面板 -->
+        <div id="panel">
+            <h2>🚗 路径规划</h2>
+            <p class="subtitle">PeMS D12 · Orange County, CA</p>
+            
+            <div style="margin-bottom: 20px; text-align: center;">
+                <a href="/compare.html" style="
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background: rgba(255, 255, 255, 0.2);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
+                   onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+                    📊 算法比对分析 →
+                </a>
+            </div>
+            
+            <div class="section">
+                <label>起点</label>
+                <div class="coord-display" id="start-display">
+                    点击地图选择起点
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>终点</label>
+                <div class="coord-display" id="end-display">
+                    点击地图选择终点
+                </div>
+            </div>
+            
+            <div class="section">
+                <label>优化模式</label>
+                <select id="optimization-mode">
+                    <option value="standard">标准模式</option>
+                    <option value="multi_objective">多目标优化</option>
+                    <option value="with_constraints">路口约束</option>
+                    <option value="full">完整模式（推荐）</option>
+                </select>
+            </div>
+
+            <div class="section" id="vehicle-section">
+                <label>车辆类型</label>
+                <select id="vehicle-type">
+                    <option value="gasoline">普通燃油车</option>
+                    <option value="diesel">柴油车</option>
+                    <option value="electric">电动车</option>
+                    <option value="hybrid">混合动力车</option>
+                </select>
+            </div>
+
+            <div class="section" id="time-section">
+                <label>时段选择: <span id="hour-label">12:00 (正常)</span></label>
+                <input type="range" id="time-of-day" min="0" max="23" value="12" step="1"
+                       style="width:100%; accent-color:#667eea;">
+                <div style="display:flex; justify-content:space-between; font-size:10px; color:#888; margin-top:2px;">
+                    <span>0:00 深夜</span><span>6:00</span><span>12:00</span><span>18:00</span><span>23:00</span>
+                </div>
+            </div>
+
+            <button id="btn-route" class="btn-primary" disabled>
+                多方案路径规划
+            </button>
+            <button id="btn-route-overlay" class="btn-primary" disabled
+                    style="background:linear-gradient(135deg,#f093fb,#f5576c);">
+                交通预测叠加
+            </button>
+            <button id="btn-reset" class="btn-secondary">
+                重置
+            </button>
+
+            <div class="section prediction-section">
+                <label>交通预测（TGCN 推荐模型）</label>
+                <select id="prediction-step">
+                    <option value="1">未来 5 分钟</option>
+                    <option value="2">未来 10 分钟</option>
+                    <option value="3">未来 15 分钟</option>
+                </select>
+                <p class="prediction-hint">数据源：D12 原始数据 + recommended 模型（200站点）</p>
+            </div>
+
+            <button id="btn-predict" class="btn-primary">
+                生成交通预测
+            </button>
+            <button id="btn-predictive-route" class="btn-primary">
+                预测拥堵重规划路径
+            </button>
+            <button id="btn-segment-prediction" class="btn-primary">
+                路段级交通预测
+            </button>
+            <button id="btn-show-hotspots" class="btn-secondary">
+                显示拥堵热点
+            </button>
+            <button id="btn-clear-prediction" class="btn-secondary">
+                清除预测图层
+            </button>
+
+            <div id="prediction-result" class="hidden">
+                <h3>交通预测结果</h3>
+                <div class="stats prediction-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">预测时距</span>
+                        <span class="stat-value" id="pred-horizon">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">平均速度</span>
+                        <span class="stat-value" id="pred-avg-speed">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">速度范围</span>
+                        <span class="stat-value" id="pred-speed-range">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">低速点数量</span>
+                        <span class="stat-value" id="pred-congestion">-</span>
+                    </div>
+                </div>
+
+                <div class="prediction-table-wrap">
+                    <table class="prediction-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>传感器ID</th>
+                                <th>线路</th>
+                                <th>方向</th>
+                                <th>预测速度</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prediction-topk-body"></tbody>
+                    </table>
+                </div>
+
+                <div id="predictive-impact" class="hidden">
+                    <h4>预测重规划影响</h4>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">基线时间</span>
+                            <span class="stat-value" id="impact-baseline-time">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">重规划时间</span>
+                            <span class="stat-value" id="impact-predictive-time">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">时间变化</span>
+                            <span class="stat-value" id="impact-time-change">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">距离变化</span>
+                            <span class="stat-value" id="impact-distance-change">-</span>
+                        </div>
+                    </div>
+                    <div class="impact-note" id="impact-note">-</div>
+                </div>
+            </div>
+
+            <!-- 多方案路线卡片 -->
+            <div id="result" class="hidden">
+                <h3>路线方案 <span style="font-size:11px;color:#888;">点击卡片查看</span></h3>
+                <div id="route-cards"></div>
+                <!-- 选中路线的详情 -->
+                <div class="stats" style="margin-top:8px;">
+                    <div class="stat-item"><span class="stat-label">距离</span><span class="stat-value" id="stat-distance">-</span></div>
+                    <div class="stat-item"><span class="stat-label">时间</span><span class="stat-value" id="stat-time">-</span></div>
+                    <div class="stat-item"><span class="stat-label">能耗</span><span class="stat-value" id="stat-energy">-</span></div>
+                    <div class="stat-item"><span class="stat-label">碳排放</span><span class="stat-value" id="stat-carbon">-</span></div>
+                    <div class="stat-item"><span class="stat-label">舒适性</span><span class="stat-value" id="stat-comfort">-</span></div>
+                    <div class="stat-item"><span class="stat-label">路口延迟</span><span class="stat-value" id="stat-constraint">-</span></div>
+                </div>
+            </div>
+            
+            <!-- 路线交通分析 -->
+            <div id="route-traffic-analysis" class="hidden" style="margin-top:16px; padding:12px; background:rgba(255,255,255,0.05); border-radius:8px;">
+                <h4 style="margin:0 0 8px 0;">路线交通预测</h4>
+                <div style="display:flex; gap:12px; margin-bottom:8px;">
+                    <div><span style="color:#888;font-size:11px;">平均速度</span><br><span id="rta-avg-speed" style="font-weight:bold;">-</span></div>
+                    <div><span style="color:#888;font-size:11px;">拥堵路段</span><br><span id="rta-congested" style="font-weight:bold;color:#ef4444;">-</span></div>
+                    <div><span style="color:#888;font-size:11px;">拥堵比例</span><br><span id="rta-congested-pct" style="font-weight:bold;">-</span></div>
+                    <div><span style="color:#888;font-size:11px;">拥堵阈值</span><br><span id="rta-threshold" style="font-weight:bold;">-</span></div>
+                </div>
+                <div style="display:flex; gap:4px; align-items:center; font-size:11px;">
+                    <span style="color:#22c55e;">畅通</span>
+                    <div style="flex:1; height:6px; border-radius:3px; background:linear-gradient(to right,#22c55e,#fbbc04,#ea4335,#dc2626);"></div>
+                    <span style="color:#dc2626;">拥堵</span>
+                </div>
+            </div>
+
+            <!-- 加载状态 -->
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <span>计算中...</span>
+            </div>
+            
+            <!-- 错误信息 -->
+            <div id="error" class="hidden"></div>
+        </div>
+        
+        <!-- 地图容器 -->
+        <div id="map"></div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/route.js"></script>
+    <script src="js/prediction.js"></script>
+</body>
+</html>

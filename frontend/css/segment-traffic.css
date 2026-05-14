@@ -1,0 +1,485 @@
+/* 路段级交通预测可视化样式 */
+
+.segment-stats,
+.hotspot-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.segment-stats-header,
+.hotspot-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(90deg);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 20px;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    color: #1f2937;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stat-value.speed-excellent {
+    color: #10b981;
+}
+
+.stat-value.speed-good {
+    color: #f59e0b;
+}
+
+.stat-value.speed-fair {
+    color: #f97316;
+}
+
+.stat-value.speed-poor {
+    color: #ef4444;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.congestion-breakdown {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.congestion-breakdown h4 {
+    margin: 0 0 16px 0;
+    color: #1f2937;
+    font-size: 16px;
+}
+
+.breakdown-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+.breakdown-item.smooth {
+    border-left: 4px solid #10b981;
+}
+
+.breakdown-item.moderate {
+    border-left: 4px solid #f59e0b;
+}
+
+.breakdown-item.congested {
+    border-left: 4px solid #f97316;
+}
+
+.breakdown-item.severe {
+    border-left: 4px solid #ef4444;
+}
+
+.breakdown-bar {
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e9ecef;
+    position: relative;
+}
+
+.breakdown-bar .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.breakdown-item.smooth .bar-fill {
+    background: #10b981;
+}
+
+.breakdown-item.moderate .bar-fill {
+    background: #f59e0b;
+}
+
+.breakdown-item.congested .bar-fill {
+    background: #f97316;
+}
+
+.breakdown-item.severe .bar-fill {
+    background: #ef4444;
+}
+
+.breakdown-item span {
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* Hotspot specific styles */
+.hotspot-list {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.hotspot-item {
+    background: white;
+    margin-bottom: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.hotspot-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hotspot-rank {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.hotspot-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hotspot-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.hotspot-title > span:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.status-smooth {
+    background: #10b981;
+    color: white;
+}
+
+.status-badge.status-moderate {
+    background: #f59e0b;
+    color: #333;
+}
+
+.status-badge.status-congested {
+    background: #f97316;
+    color: white;
+}
+
+.status-badge.status-severe {
+    background: #ef4444;
+    color: white;
+}
+
+.hotspot-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.hotspot-metrics .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hotspot-metrics .metric-label {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.hotspot-metrics .metric-value {
+    font-weight: 500;
+    color: #1f2937;
+    font-size: 14px;
+}
+
+/* Legend enhancements */
+.traffic-legend-container {
+    max-width: 200px;
+}
+
+    .traffic-legend .legend-title {
+        font-size: 14px;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    .traffic-legend .legend-items {
+        margin-bottom: 12px;
+    }
+
+    .traffic-legend .legend-item {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+    }
+
+    .traffic-legend .legend-color {
+        height: 16px;
+        margin-right: 8px;
+        border-radius: 2px;
+    }
+
+    .traffic-legend .legend-label {
+        color: #333;
+        font-size: 12px;
+    }
+
+    .traffic-legend .legend-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .traffic-legend .legend-btn {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 11px;
+        transition: all 0.2s ease;
+    }
+
+    .traffic-legend .legend-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    /* Popup enhancements */
+.traffic-segment-popup,
+.hotspot-popup {
+    font-family: Arial, sans-serif;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.road-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.status-smooth {
+    background: #10b981;
+    color: white;
+}
+
+.status-badge.status-moderate {
+    background: #f59e0b;
+    color: #333;
+}
+
+.status-badge.status-congested {
+    background: #f97316;
+    color: white;
+}
+
+.status-badge.status-severe {
+    background: #ef4444;
+    color: white;
+}
+
+.popup-body {
+    padding: 12px;
+    background: white;
+    border-radius: 0 0 8px 8px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.metric-row:last-child {
+    border-bottom: none;
+}
+
+.metric-label {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.metric-value {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.speed-value.speed-excellent {
+    color: #10b981;
+}
+
+.speed-value.speed-good {
+    color: #f59e0b;
+}
+
+.speed-value.speed-fair {
+    color: #f97316;
+}
+
+.speed-value.speed-poor {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.congestion-level {
+    width: 120px;
+    height: 16px;
+    margin-top: 4px;
+}
+
+/* ── Simple legend (injected by SegmentTrafficVisualizer) ── */
+.simple-legend-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+.simple-traffic-legend { min-width: 100px; }
+.simple-traffic-legend .legend-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; color: #202124; }
+.simple-traffic-legend .legend-items { display: flex; flex-direction: column; gap: 4px; }
+.simple-traffic-legend .legend-item { display: flex; align-items: center; gap: 8px; }
+.legend-line-smooth { width: 24px; height: 4px; background: #34a853; border-radius: 2px; }
+.legend-line-moderate { width: 24px; height: 4px; background: #fbbc04; border-radius: 2px; }
+.legend-line-congested { width: 24px; height: 4px; background: #ea4335; border-radius: 2px; }
+.legend-line-severe { width: 24px; height: 4px; background: #dc2626; border-radius: 2px; }
+.simple-traffic-legend .legend-label { color: #5f6368; font-size: 13px; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hotspot-item {
+        grid-template-columns: 1fr;
+    }
+
+    .breakdown-grid {
+        grid-template-columns: 1fr;
+    }
+}
